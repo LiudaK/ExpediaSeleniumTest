@@ -1,0 +1,6 @@
+.cache
+.idea/
+geckodriver.log
+lib/
+vitenv/
+.DS_Store
