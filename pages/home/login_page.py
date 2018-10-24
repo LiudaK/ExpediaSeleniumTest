@@ -10,10 +10,10 @@ class LoginPage():
         login = self.driver.find_element(By.ID, "account-signin")
         login.click()
 
-        usernameLink = self.driver.find_element(By.ID, "signin-loginid")
+        usernameLink = self.driver.find_element(By.ID, "gss-signin-email")
         usernameLink.send_keys(username)
-        passwordLink = self.driver.find_element(By.ID, "signin-password")
+        passwordLink = self.driver.find_element(By.ID, "gss-signin-password")
         passwordLink.send_keys(password)
 
-        submitbutton = self.driver.find_element(By.ID, "submitButton")
+        submitbutton = self.driver.find_element(By.ID, "gss-signin-submit")
         submitbutton.click()

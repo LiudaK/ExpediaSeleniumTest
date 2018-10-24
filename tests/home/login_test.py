@@ -6,10 +6,10 @@ import unittest
 class LoginTest(unittest.TestCase):
     def test_validloging(self):
         baseURL = "https://www.expedia.com/"
-        driver = webdriver.Firefox()
-        # driver = webdriver.Chrome()
+        #driver = webdriver.Firefox()
+        driver = webdriver.Chrome()
         driver.maximize_window()
-        driver.implicitly_wait(1)
+        driver.implicitly_wait(0.5)
         driver.get(baseURL)
 
         lp = LoginPage(driver)
