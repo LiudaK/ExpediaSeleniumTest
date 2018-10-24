@@ -33,52 +33,52 @@ class SeleniumDriver():
             locatorType = locatorType.lower()
             byType = self.getByType(locatorType)
             element = self.driver.find_element(byType, locator)
-            print("Element Found")
+            print("Element Found with locator: " + locator + ", locator type: " + locatorType)
         except:
-            print("Element not found")
+            print("Element not found with locator: " + locator + ", locator type: " + locatorType)
         return element
 
     def elementClick(self, locator, locatorType = "id"):
         try:
             element = self.getElement(locator, locatorType)
             element.click()
-            print("Clicked on element with locator: " + locator + " locator type: " + locatorType)
+            print("Clicked on element with locator: " + locator + ", locator type: " + locatorType)
         except:
-            print("Cannot click on the element with locator: " + locator + " locator type: " + locatorType)
+            print("Cannot click on the element with locator: " + locator + ", locator type: " + locatorType)
 
     def sendKeys(self, data, locator, locatorType = "id"):
         try:
             element = self.getElement(locator, locatorType)
-            element.sendkeys(data)
-            print("Send data on element with locator: " + locator + " locator type: " + locatorType)
+            element.send_keys(data)
+            print("Send data on element with locator: " + locator + ", locator type: " + locatorType)
         except:
-            print("Cannot send data on the element with locator: " + locator + " locator type: " + locatorType)
+            print("Cannot send data on the element with locator: " + locator + ", locator type: " + locatorType)
 
 
-    def isElementPresent(self, locator, byType):
+    def isElementPresent(self, locator, locatorType):
         try:
-            element = self.driver.find_element(byType, locator)
+            element = self.getElement(locator, locatorType)
             if element is not None:
-                print("Element Found")
+                print("Element Found with locator: " + locator + ", locator type: " + locatorType)
                 return True
             else:
-                print("Element not found")
+                print("Element not found with locator: " + locator + ", locator type: " + locatorType)
                 return False
         except:
-            print("Element not found")
+            print("Element not found with locator: " + locator + ", locator type: " + locatorType)
             return False
 
     def elementPresenceCheck(self, locator, byType):
         try:
             elementList = self.driver.find_elements(byType, locator)
             if len(elementList) > 0:
-                print("Element Found")
+                print("Elements Found with locator: " + locator + ", locator type: " + byType)
                 return True
             else:
-                print("Element not found")
+                print("Elements not found with locator: " + locator + ", locator type: " + byType)
                 return False
         except:
-            print("Element not found")
+            print("Elements not found with locator: " + locator + ", locator type: " + byType)
             return False
 
     def waitForElement(self, locator, locatorType="id",
@@ -93,9 +93,9 @@ class SeleniumDriver():
                                                      ElementNotVisibleException,
                                                      ElementNotSelectableException])
             element = wait.until(EC.element_to_be_clickable((byType, locator)))
-            print("Element appeared on the web page")
+            print("Element appeared on the web page with locator: " + locator + ", locator type: " + locatorType)
         except:
-            print("Element not appeared on the web page")
+            print("Element not appeared on the web page with locator: " + locator + ", locator type: " + locatorType)
             print_stack()
         return element
 

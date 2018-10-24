@@ -8,7 +8,7 @@ class LoginTest(unittest.TestCase):
         baseURL = "https://www.expedia.com/"
         #driver = webdriver.Firefox()
         driver = webdriver.Chrome()
-        driver.maximize_window()
+        #driver.maximize_window()
         driver.implicitly_wait(0.5)
         driver.get(baseURL)
 
@@ -19,6 +19,6 @@ class LoginTest(unittest.TestCase):
         if flight is not None:
             print("Login Successful")
         else:
-            print("Login Faileed")
+            print("Login Failed")
 
 
