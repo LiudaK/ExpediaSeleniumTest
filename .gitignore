@@ -4,3 +4,4 @@ geckodriver.log
 lib/
 vitenv/
 .DS_Store
+automation.log

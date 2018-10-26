@@ -1,7 +1,12 @@
 from selenium.webdriver.common.by import By
 from base.selenium_driver import SeleniumDriver
+import utilities.custom_logger as cl
+import logging
 
 class LoginPage(SeleniumDriver):
+
+    log = cl.customLogger(logging.DEBUG)
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -50,3 +55,11 @@ class LoginPage(SeleniumDriver):
         self.enterPassword(password)
         self.driver.implicitly_wait(0.5)
         self.clickLoginButton()
+
+    def verifyLoginSuccessful(self):
+        result = self.isElementPresent("//span[contains(text(), 'Hello')]", "xpath")
+        return result
+
+    def verifyLoginFail(self):
+        result = self.isElementPresent("signInEmailErrorMessage", "id")
+        return result
